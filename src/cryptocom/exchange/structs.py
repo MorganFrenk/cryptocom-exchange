@@ -224,6 +224,7 @@ class PrivateTrade:
     filled_price: float
     filled_quantity: float
     order_id: int
+    liquidity_indicator: str
 
     @cached_property
     def is_buy(self):
@@ -244,7 +245,8 @@ class PrivateTrade:
             created_at=int(data['create_time'] / 1000),
             filled_price=pair.round_price(data['traded_price']),
             filled_quantity=pair.round_quantity(data['traded_quantity']),
-            order_id=int(data['order_id'])
+            order_id=int(data['order_id']),
+            liquidity_indicator=data['liquidity_indicator']
         )
 
 
